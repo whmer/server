@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whmer exitium</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /*box-sizing: border-box;*/
+        }
+
+
+        @font-face{
+            font-family: zip;
+            src: url('./fonts/6c6374bad0b0b6d204d8d6dc4a18d820.woff');
+            font-style: normal;
+        }
+
+        @font-face{
+            font-family: zip;
+            src: url('./fonts/e8acd7d9bf6207f99350ca9f9e23b168.woff');
+            font-style: normal;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: zip;
+            overflow: hidden;
+            background-color: black;
+            color: white;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            z-index:3;
+            animation: starAnimation 5s infinite linear;
+        }
+
+
+        @keyframes starAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        @keyframes rotateBackground {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .int{
+            width: 100%;
+            text-align: center;
+        }
+
+        input{padding: 10px; outline: none; width: 100%; background:transparent;
+             border: none; color: white; font-family: zip;
+             font-size:20px; font-weight:600;
+            }
+            .pin{text-align:left; width:450px; margin: 0 auto 10px;}
+
+            button{padding:10px; font-size:20px; font-family:zip; cursor: pointer; font-weight:600; background:white;border: 1px solid #05050588;}
+            .butt{padding: 5px; outline: none; width: 450px; display:flex; background:#313131c5;
+             border: 1px solid #706f6f; color: white; font-family: zip;
+             font-size:20px; font-weight:600; justify-content: center; text-align: center; margin: 0 auto 10px;
+            }
+
+        @media(max-width:999px){
+            input, .butt, .pin{
+                width: 80%;
+            }
+        }
+
+        .welcome{text-align:left; padding:10px; margin-left:10px; margin-top:5px;}
+        .dever{color:#464545e8;}
+
+        .magi{border-radius:100px;  padding:5px; background-color: #464545a9;}
+        .hats{z-index: 6; background: transparent; text-align:center; position:fixed; justify-content: center; margin-top:20%; width:100%; animation: --hatsuneMiku 3s ease-in;}
+        .hatsune{z-index: 6; background: transparent; text-align:center; display:flex; justify-content: center; }
+
+        @keyframes --hatsuneMiku{
+            from{
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        #err{color: white;
+            font-family:zip; font-size: 14px; font-weight:600;
+        }
+        .bem{
+            display: none;
+        }
+        .butte{
+            border: 1px solid red;
+            transition: 0.5s;
+        }
+        </style>
+</head>
+<body>
+    <div class="hats">
+    <div class="hatsune">
+        <div class="miku">
+            <img src="./img/icegif-2601-829028694.gif" width="90" class="magi"/>
+        </div>
+        <div class="welcome">
+            <h3>WELCOME USER</h3>
+            <b class="dever">creator is developer zypki exitium</b>
+        </div>
+    </div><br><br><br>
+    <div class="backmiku">
+        <!--form onsubmit="event.preventDefault(); validarSenha();"></form-->
+        <div class="int">
+            <div class="bem">
+                <h2 class="vim">Bem-vindo</h2>
+                <p>Estamos direcionando você para o painel...</p>
+            </div>
+            <div class="pin">
+                <h3>Painel whmer</h3>
+                <p>insira o PIN de 6 dígitos para acessar o painel de dados</p>
+            </div>
+            <div class="butt">
+                <input type="text" maxlength="6" id="senha" placeholder="PIN" onfocus='this.placeholder=""' onblur='this.placeholder="PIN"'/>
+                <button type="submit" class="entert">enter</button>
+            </div>
+        </div>
+    </div>
+        <div class="pin" id="erri">
+            <i id="err">não tem acesso ao PIN?</i>
+        </div>
+
+        <script>
+            document.querySelector('.entert').addEventListener('click', () => {
+                const input = document.getElementById('senha').value;
+                const vim = document.querySelector('.vim');
+                const err = document.getElementById('err');
+                const pin = document.querySelector('.pin');
+                const butt = document.querySelector('.butt');
+                //butt.classList.remove('.butte', '.butt');
+                if (input === "121212"){
+                    err.style.display = "none";
+                    //err.innerText = "Loading...";
+                    document.querySelector('.bem').style.display = "block";
+                    butt.style.display = "none";
+                    pin.style.display = "none";
+                    butty.style.border = '1px solid green';
+                } else{
+                    butt.style.border = "1px solid red";
+                    butt.style.transition = "0.5s";
+                    //butt.classList.add('.butte');
+                    document.getElementById('senha').value = "";
+                    err.style.color = "red";
+                    err.innerText = "erro try again! não consegue logar?";
+                }
+            })
+
+            document.getElementById('senha').addEventListener('input', () => {
+                        const intr = document.getElementById('senha');
+                        const butty = document.querySelector('.butt');
+                        if(intr.value.length === 6){
+                        butty.style.border = "1px solid green";
+                        } else{
+                            butty.style.border = "1px solid white";
+
+                        }
+                    })
+        </script>
+        <script>
+ window.onload = function() {
+            // Faz a requisição para a API que retorna o JSON
+            fetch('/data/')
+                .then(response => response.json())
+                .then(data => {
+                    // Preenche o campo de senha com o valor do JSON
+                    //document.getElementById("senha").value = data.senha;
+                })
+                .catch(error => console.error('Erro ao carregar a senha:', error));
+        };
+
+        function validarSenha() {
+            var senha = document.getElementById("senha").value;
+            var mensagem = document.getElementById("erri");
+
+            // Valida se a senha tem exatamente 6 dígitos
+            if (senha.length === 6 && !isNaN(senha)) {
+                mensagem.style.display = "none";
+            } else {
+                mensagem.style.display = "block";
+            }
+        }
+        </script>
+    </div>
+    </div>
+    <script>
+        function createStars() {
+            const numberOfStars = 200;
+            const body = document.body;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const size = Math.random() * 3 + 1; 
+                const positionX = Math.random() * window.innerWidth;
+                const positionY = Math.random() * window.innerHeight;
+                const animationDuration = Math.random() * 5 + 5; 
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${positionX}px`;
+                star.style.top = `${positionY}px`;
+
+                
+                star.style.animationDuration = `${animationDuration}s`;
+
+                body.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+    <script>
+        
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === "F12") {
+        e.preventDefault(); 
+    }
+});
+
+
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+        e.preventDefault(); 
+    }
+});
+
+    </script>
+</body>
+</html>
