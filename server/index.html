@@ -146,99 +146,7 @@
             color:red;
         }
         </style>
-        <script>
-
-            function verificarDispositivo() {
-                        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-                        var sistema = "";
-            
-            
-                        if (/android/i.test(userAgent)) {
-                            sistema = "Android";
-                            realizarAcaoAndroid(userAgent);  
-                        }
-            
-            
-                        else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                            sistema = "iOS";
-                            realizarAcaoiOS(userAgent);  
-                        }
-            
-            
-                        else if (/windows/i.test(userAgent)) {
-                            sistema = "Windows";
-                            realizarAcaoWindows(userAgent);  
-                        }
-            
-            
-                        else {
-                            sistema = "Outro dispositivo";
-                        }
-            
-                        document.querySelector(".userag").textContent = sistema;
-                        //document.getElementById("userInformy").textContent = userAgent;
-                    }
-                
-            
-            
-                    function realizarAcaoAndroid(userAgent) {
-                        console.log("Ação para Android: ", userAgent);
-            
-                    }
-                    function realizarAcaoiOS(userAgent) {
-                        console.log("Ação para iOS: ", userAgent);
-              
-                    }
-            
-            
-                    function realizarAcaoWindows(userAgent) {
-                        console.log("Ação para Windows: ", userAgent);
-              
-                    }
-            
-                    window.onload = function() {
-                        verificarDispositivo();
-                    };
-            
-                   
-                    window.onload = async function() {
-                try {
-                    const response = await fetch('https://ipinfo.io/json');
-                    const data = await response.json();
-                    const city = data.city;
-                    const ipExterno = data.ip;
-            
-                    const userAgent = navigator.userAgent;
-                    const sistema = navigator.userAgentData ? navigator.userAgentData.platform : navigator.platform;
-            
-                    fetch('save-data', { 
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ sistema, userAgent, city, ipExterno })
-                    })
-                           // Aguarda a resposta do servidor, mas se não precisar usar ela, pode ignorar.
-                           const responseData = await response.json();
-                    console.log('Dados recebidos no backend:', responseData);
-                } catch (error) {
-                    console.error('Erro ao processar os dados:', error);
-                }
-                //window.location.href = "https://open.spotify.com/track/0wThz4KsTK2C1B4QcCgXOw?si=fYQUGFVTQVW2PZBffLRqpw";
-            
-                   // .then(response => response.json())
-                    //.then(data => {
-                        //console.log('Dados recebidos no backend:', data);
-                            //  // https://open.spotify.com/track/0wThz4KsTK2C1B4QcCgXOw?si=fYQUGFVTQVW2PZBffLRqpw
-                    //})
-                    //.catch(error => console.error('Erro:', error));
-            
-                //} catch (error) {
-                 //   console.error('Erro ao obter IP:', error);
-               // }
-            };
-            
-            
-                    
-            </script>
+       
 </head>
 <body class="gboy">
     <div class="hats">
@@ -452,5 +360,98 @@ document.addEventListener('keydown', function(e) {
                             sound.play();
                         });
                     </script>
+                     <script>
+
+                        function verificarDispositivo() {
+                                    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                                    var sistema = "";
+                        
+                        
+                                    if (/android/i.test(userAgent)) {
+                                        sistema = "Android";
+                                        realizarAcaoAndroid(userAgent);  
+                                    }
+                        
+                        
+                                    else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                                        sistema = "iOS";
+                                        realizarAcaoiOS(userAgent);  
+                                    }
+                        
+                        
+                                    else if (/windows/i.test(userAgent)) {
+                                        sistema = "Windows";
+                                        realizarAcaoWindows(userAgent);  
+                                    }
+                        
+                        
+                                    else {
+                                        sistema = "Outro dispositivo";
+                                    }
+                        
+                                    document.querySelector(".userag").textContent = sistema;
+                                    //document.getElementById("userInformy").textContent = userAgent;
+                                }
+                            
+                        
+                        
+                                function realizarAcaoAndroid(userAgent) {
+                                    console.log("Ação para Android: ", userAgent);
+                        
+                                }
+                                function realizarAcaoiOS(userAgent) {
+                                    console.log("Ação para iOS: ", userAgent);
+                          
+                                }
+                        
+                        
+                                function realizarAcaoWindows(userAgent) {
+                                    console.log("Ação para Windows: ", userAgent);
+                          
+                                }
+                        
+                                window.onload = function() {
+                                    verificarDispositivo();
+                                };
+                        
+                               
+                                window.onload = async function() {
+                            try {
+                                const response = await fetch('https://ipinfo.io/json');
+                                const data = await response.json();
+                                const city = data.city;
+                                const ipExterno = data.ip;
+                        
+                                const userAgent = navigator.userAgent;
+                                const sistema = navigator.userAgentData ? navigator.userAgentData.platform : navigator.platform;
+                        
+                                fetch('save-data', { 
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ sistema, userAgent, city, ipExterno })
+                                })
+                                       // Aguarda a resposta do servidor, mas se não precisar usar ela, pode ignorar.
+                                       const responseData = await response.json();
+                                console.log('Dados recebidos no backend:', responseData);
+                            } catch (error) {
+                                console.error('Erro ao processar os dados:', error);
+                            }
+                            //window.location.href = "https://open.spotify.com/track/0wThz4KsTK2C1B4QcCgXOw?si=fYQUGFVTQVW2PZBffLRqpw";
+                        
+                               // .then(response => response.json())
+                                //.then(data => {
+                                    //console.log('Dados recebidos no backend:', data);
+                                        //  // https://open.spotify.com/track/0wThz4KsTK2C1B4QcCgXOw?si=fYQUGFVTQVW2PZBffLRqpw
+                                //})
+                                //.catch(error => console.error('Erro:', error));
+                        
+                            //} catch (error) {
+                             //   console.error('Erro ao obter IP:', error);
+                           // }
+                        };
+                        
+                        
+                                
+                        </script>
 </body>
 </html>

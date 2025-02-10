@@ -1,8 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
 const PORT = 4040;
 
+app.use(bodyParser.json());
 app.use(express.static('./server'));
 
 app.post('/save-data', (req, res) => {
