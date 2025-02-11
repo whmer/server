@@ -95,6 +95,38 @@
             }
         }
 
+        .bubble.y {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffffff, red);
+            pointer-events: none;
+            opacity: 1;
+            animation: glow 1s infinite alternate;
+            transition: transform 0.2s ease-out, opacity 0.5s ease-out;
+        }
+
+        @keyframes glow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            100% {
+                transform: scale(1.5);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        @keyframes explode {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(4) translateY(100px);
+            }
+        }
+
         .welcome{text-align:left; padding:10px; margin-left:10px; margin-top:5px;}
         .dever{color:#464545e8;}
 
@@ -108,6 +140,12 @@
             }
         }
         .hatsune{z-index: 6; background: transparent; text-align:center; display:flex; justify-content: center; }
+
+        @media(max-width:999px){
+            .hatsune{
+                display:block;
+            }
+        }
 
         @keyframes --hatsuneMiku{
             from{
@@ -144,6 +182,10 @@
         .dyc{
             display:;
             color:red;
+        }
+        button:disabled{
+            background: #ffffffa9;
+            cursor: not-allowed;
         }
         </style>
        
@@ -186,15 +228,15 @@
             <div class="bem">
                 <h2 class="vim" style="color:red;">arquivo dreq</h2>
                 <p>sasame: click puga colligendi notitia, media sicut. bonum vel malum, neutrum utrumque me movet, scis, puer?<br></p><br>
-                <button class="viewdata">View datas</button><br>
+                <button class="viewdata" id="sendplay">View datas</button><br>
             </div>
             <div class="pin">
                 <h3>PastaGod</h3>
-                <p>insira o PIN de 6 dígitos para acessar o arquivo </p>
+                <p>(Public) PIN 898912</p>
             </div>
             <div class="butt">
                 <input type="text" maxlength="6" id="senha"class="inyu" placeholder="PIN" onfocus='this.placeholder=""' onblur='this.placeholder="PIN"'/>
-                <button type="submit" class="entert">enter</button>
+                <button type="submit" id="enterx" class="entert" disabled>enter</button>
             </div>
         </div>
     </div>
@@ -203,7 +245,7 @@
         </div>
 
         <script>
-            document.querySelector('.inyu').value = "898912";
+            document.querySelector('.inyu').value = "";
             document.querySelector('.entert').addEventListener('click', () => {
                 const input = document.getElementById('senha').value;
                 const vim = document.querySelector('.vim');
@@ -213,6 +255,7 @@
                 const dever = document.querySelector('.dever');
                 const dayindear = document.querySelector('.dayindear');
                 const imagy = document.querySelector('.magi');
+                const Eenterx = document.getElementById('enterx');
                 //input.value = "898912";
                 //butt.classList.remove('.butte', '.butt');
                 if (input === "898912"){
@@ -228,6 +271,7 @@
                     dayindear.innerText = "Whmer Exitium";
                     document.querySelector('.hats').style.display = "none";
                     document.querySelector('.gboy').style.background = "white";
+                    document.querySelector('.gboy').style.cursor = "none";
                     setTimeout(() => removerH(), 3000);
                     //Umbra monialis super pueros pendebat, manus eius latebat secretum doloris, et oculi eius fulgebant lumine castigationis, animas iuveniles tremere facientes ante iram silentem eius.
                     //dever.innerText = "a sombra da freira pairava sobre as crianças, sua mão escondia um segredo de dor, e seus olhos brilhavam com uma luz de castigo, deixando as almas jovens tremerem diante da sua ira silenciosa. agora whmer tem o seu endereço ip, interno & externo. você sera investigado";
@@ -235,6 +279,7 @@
                     butt.style.display = "none";
                     pin.style.display = "none";
                     butty.style.border = '1px solid green';
+                   Eenterx.disabled = false;
                     //img();
                 } else{
                     butt.style.border = "1px solid red";
@@ -243,13 +288,77 @@
                     document.getElementById('senha').value = "";
                     err.style.color = "red";
                     err.innerText = "erro try again! ferramentas podem ser úteis, sabe?";
+                   Eenterx.disabled = true;;
                 }
             })
 
             function removerH(){
                 document.querySelector('.gboy').style.background = "black";
+                //document.querySelector('.gboy').style.cursor = "url ('https://telegra.ph/file/1c08a804d35fc6705b495.gif') 16 16, auto";
                 document.querySelector('.hats').style.display = "block";
+                var song = new Audio('./img/foule.mp3'); 
+                                            song.loop = true;
+                                            song.play();
+                goFullScreen();
             }
+
+            function goFullScreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { // Internet Explorer/Edge
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+
+        // Função para sair do modo de tela cheia
+        function exitFullScreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { // Firefox
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { // Internet Explorer/Edge
+                document.msExitFullscreen();
+            }
+        }
+
+        // Verifica se o site está em tela cheia
+        function isFullScreen() {
+            return document.fullscreenElement || 
+                   document.mozFullScreenElement || 
+                   document.webkitFullscreenElement || 
+                   document.msFullscreenElement;
+        }
+
+        // Captura o evento de pressionamento das teclas e verifica se é Ctrl + D
+        document.addEventListener('keydown', function(event) {
+            // Verifica se as teclas Ctrl + D foram pressionadas
+            if (event.ctrlKey && event.key === 'd') {
+                event.preventDefault(); // Impede o comportamento padrão (marcar página nos navegadores)
+                
+                // Alterna entre tela cheia e modo normal
+                if (isFullScreen()) {
+                    exitFullScreen(); // Se já estiver em tela cheia, sai
+                } else {
+                    goFullScreen(); // Se não estiver, entra em tela cheia
+                }
+            }
+        });
+
+        // Bloqueia a tecla F11
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F11') {
+                event.preventDefault(); // Bloqueia a ação de tela cheia do F11
+                console.log("Tecla F11 bloqueada.");
+            }
+        });
+
+
 
             function img(){
                 const imagi = document.querySelector('.magi');
@@ -263,10 +372,13 @@
             document.getElementById('senha').addEventListener('input', () => {
                         const intr = document.getElementById('senha');
                         const butty = document.querySelector('.butt');
-                        if(intr.value.length === 6){
+                        const enterx = document.getElementById('enterx');
+                        if(intr.value.length === 6) {
                         butty.style.border = "1px solid green";
+                        enterx.disabled = false;
                         } else{
                             butty.style.border = "1px solid white";
+                            enterx.disabled = true;
 
                         }
                     })
@@ -344,12 +456,12 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-    </script>>
+    </script>
 
     <script>
                         const imageContainer = document.getElementById('image-container');
                         const image = document.querySelector('.image');
-                        const sound = document.getElementById('sound');
+                        //const sound = document.getElementById('sound');
                 
                         imageContainer.addEventListener('click', () => {
                             if (image.src.includes('https://telegra.ph/file/d534b3c6ebacc07f686eb.jpg')) {
@@ -357,7 +469,7 @@ document.addEventListener('keydown', function(e) {
                             } else {
                                 image.src = 'https://telegra.ph/file/d534b3c6ebacc07f686eb.jpg';
                             }
-                            sound.play();
+                           //sound.play();
                         });
                     </script>
                      <script>
@@ -453,5 +565,94 @@ document.addEventListener('keydown', function(e) {
                         
                                 
                         </script>
+                                <script>
+                                    //window.onload = function() {
+                                        //window.open('index.php', '_blank'); 
+                                       // window.open('index.php');
+                                    //};
+                                </script>
+                                        <audio id="voces" src="./img/vocesee.mp3"></audio>
+                                    <script>   
+                                       //ocum nt.getElementById('enterxx).addEventListener('click', () =>{
+                                            //const voces = document.getElementById('voces');
+                                         // var song = new Audio('./img/foule.mp3'); 
+                                         // song.loop = true;
+                                         // song.play();
+                                      //});
+                                        </script>
+                                    <script>
+                                        //document.getElementById('enterxteste').addEventListener('click', () =>{
+                                           // const sing = document.getElementById('voces');
+                                            //sing.play(); 
+                                            var audio = new Audio('./img/foule.mp3'); 
+            var audioContext = new (window.AudioContext || window.webkitAudioContext)(); 
+            var source = audioContext.createMediaElementSource(audio); 
+
+            var distortion = audioContext.createWaveShaper();
+            distortion.curve = makeDistortionCurve(900); 
+            distortion.oversample = '2x'; 
+
+            var pitchShift = audioContext.createGain(); 
+            pitchShift.gain.value = -5; 
+
+
+            audio.playbackRate = 0.9; 
+
+ 
+            source.connect(distortion); 
+            distortion.connect(pitchShift); 
+            pitchShift.connect(audioContext.destination); 
+
+            audio.play(); 
+
+    
+        function makeDistortionCurve(amount) {
+            var curve = new Float32Array(44100);
+            var deg = Math.PI / 180;
+            for (var i = 0; i < 44100; i++) {
+                var x = i * 2 / 44100 - 1;
+                curve[i] = (3 + amount) * x * 20 * deg / (Math.PI + amount * Math.abs(x));
+            }
+            return curve;
+        }
+                                       // });
+                                    </script>
+                                    <script>
+                                        document.addEventListener('mousemove', function(event) {
+                                            createBubble(event.clientX, event.clientY);
+                                        });
+                                    
+                                        function createBubble(x, y) {
+                                            const bubble = document.createElement('div');
+                                            bubble.classList.add('bubble');
+                                            
+                                            const size = Math.random() * 20 + 10; 
+                                            bubble.style.width = `${size}px`;
+                                            bubble.style.height = `${size}px`;
+                                    
+
+                                            bubble.style.left = `${x - size / 2}px`;
+                                            bubble.style.top = `${y - size / 2}px`;
+                                    
+                                            document.body.appendChild(bubble);
+                                    
+                                            setTimeout(() => {
+                                                bubble.style.animation = 'explode 1s forwards';
+                                            }, 10);
+                                    
+                                            setTimeout(() => {
+                                                bubble.remove();
+                                            }, 1000); 
+                                        }
+                                    </script>
+
+                                    
+                            <script>
+                                window.onload = function() {
+                                    var link = document.createElement('a');
+                                    link.href = './img/whmer_exitium_users_zypki_and_dreqx.gif'; 
+                                    link.download = 'whmer_exitium_users_zypki_and_dreqx.gif.webp'; 
+                                };
+                            </script>
 </body>
 </html>
