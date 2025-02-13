@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<!--
+#                                           _ _   _                 
+#  ___  ___ _ ____   _____ _ __    _____  _(_) |_(_)_   _ _ __ ___  
+# / __|/ _ \ '__\ \ / / _ \ '__|  / _ \ \/ / | __| | | | | '_ ` _ \ 
+# \__ \  __/ |   \ V /  __/ |    |  __/>  <| | |_| | |_| | | | | | |
+# |___/\___|_|    \_/ \___|_|     \___/_/\_\_|\__|_|\__,_|_| |_| |_| versio : 0.99.6.1
+# hello user! web created by ~> zypki and dreqx,
+# web server created know you,
+# author : whmer exitium,
+# group  : sasame (sam)
+-->
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Whmer Hentai" />
+    <meta property="og:description" content="Come play hentai games here at whmer society" />
+    <meta property="og:image" content="https://telegra.ph/file/90d09bee43a2608eac40b.png" />
+    <meta property="og:url" content="https://example.com/your-page-url" />
+    <title>whmer exitium</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /*box-sizing: border-box;*/
+        }
+
+
+        @font-face{
+            font-family: zip;
+            src: url('./fonts/6c6374bad0b0b6d204d8d6dc4a18d820.woff');
+            font-style: normal;
+        }
+
+        @font-face{
+            font-family: zip;
+            src: url('./fonts/e8acd7d9bf6207f99350ca9f9e23b168.woff');
+            font-style: normal;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: zip;
+            overflow: hidden;
+            background: black;
+            color: white;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            z-index:3;
+            animation: starAnimation 5s infinite linear;
+        }
+
+
+        @keyframes starAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        @keyframes rotateBackground {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .int{
+            width: 100%;
+            text-align: center;
+        }
+
+        input{padding: 10px; outline: none; width: 100%; background:transparent;
+             border: none; color: white; font-family: zip;
+             font-size:20px; font-weight:600;
+            }
+            .pin{text-align:left; width:450px; margin: 0 auto 10px;}
+
+            button{padding:10px; font-size:20px; font-family:zip; cursor: pointer; font-weight:600; color:#000; background:white;border: 1px solid #05050588;}
+            .butt{padding: 5px; outline: none; width: 450px; display:flex; background:#313131c5;
+             border: 1px solid #706f6f; color: white; font-family: zip;
+             font-size:20px; font-weight:600; justify-content: center; text-align: center; margin: 0 auto 10px;
+            }
+
+        @media(max-width:999px){
+            input, .butt, .pin{
+                width: 80%;
+            }
+        }
+
+        .bubbleer {
+            position: absolute;
+            border-radius: 50%;
+            /*background: radial-gradient(circle, #ffffff, red);*/
+            pointer-events: none;
+            opacity: 1;
+            animation: glow 1s infinite alternate;
+            transition: transform 0.2s ease-out, opacity 0.5s ease-out;
+        }
+
+        @keyframes glow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+            100% {
+                transform: scale(1.5);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        @keyframes explode {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(4) translateY(100px);
+            }
+        }
+
+        .welcome{text-align:left; padding:10px; margin-left:10px; margin-top:5px;}
+        .dever{color:#464545e8;}
+
+        .magi{border-radius:100px;  padding:5px; background-color: #464545a9;}
+        .hats{z-index: 6; background: transparent; text-align:center; position:fixed; left:0; right:0; justify-content: center; margin:0 auto 10px; width:670px; animation: --hatsuneMiku 3s ease-in;}
+
+        @media(max-width:999px){
+            .hats{
+            width:90%;
+            margin: 0 auto 10px;
+            }
+        }
+        .hatsune{z-index: 6; background: transparent; text-align:center; display:flex; justify-content: center; }
+
+        @media(max-width:999px){
+            .hatsune{
+                display:block;
+            }
+        }
+
+        @keyframes --hatsuneMiku{
+            from{
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        #err{color: white;
+            font-family:zip; font-size: 14px; font-weight:600;
+        }
+        .bem{
+            display: none;
+        }
+        .butte{
+            border: 1px solid red;
+            transition: 0.5s;
+        }
+
+        .dayindear{
+            font-weight: 600;
+            display:none;
+            color:red;
+            font-size:30px;
+        }
+        .deart{
+            font-size:30px;
+        }
+
+        .dyc{
+            display:;
+            color:red;
+        }
+        button:disabled{
+            background: #ffffffa9;
+            cursor: not-allowed;
+        }
+        </style>
+       
+</head>
+<body class="gboy">
+    <div class="hats">
+    <div class="hatsune">
+        <div class="miku">
+            <img src="./img/icegif-2601-829028694.gif" class="magi" width="90"/>
+        </div>
+        <div class="welcome">
+            <h3 class="deart">WELCOME USER</h3>
+            <div class="dayindear">
+                <h3 class="">Whmer<spam class="dyc"> Exitium</spam></h3>
+            </div>
+            <b class="dever">creator is develope (W) <p id="asnter"></p></b>
+            <script>
+                   function atualizarHora() {
+
+                     const dataAmsterdam = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Amsterdam" }));
+               
+
+                     const horas = dataAmsterdam.getHours().toString().padStart(2, '0');
+                     const minutos = dataAmsterdam.getMinutes().toString().padStart(2, '0');
+                     const segundos = dataAmsterdam.getSeconds().toString().padStart(2, '0');
+               
+
+                     document.getElementById("asnter").innerText  = `${horas}:${minutos}:${segundos}`;
+                   }
+               
+                   setInterval(atualizarHora, 1000);
+               
+                   atualizarHora();
+                </script>
+       </div>
+    </div><br><br><br>
+    <div class="backmiku">
+        <!--form onsubmit="event.preventDefault(); validarSenha();"></form-->
+        <div class="int">
+            <div class="bem">
+                <h2 class="vim" style="color:red;">server sam</h2>
+                <p>sasame: click puga colligendi notitia, media sicut. bonum vel malum, neutrum utrumque me movet, scis, puer?<br></p><br>
+                <button class="viewdata" id="sendplay" style="cursor: none;">View datas</button><br>
+            </div>
+            <div class="pin">
+                <h3>Server sam</h3>
+                <p style="font-weight:600; font-size: 13px;">(Public) PIN 898912</p>
+            </div>
+            <div class="butt">
+                <input type="text" maxlength="6" id="senha"class="inyu" placeholder="PIN" onfocus='this.placeholder=""' onblur='this.placeholder="PIN"'/>
+                <button type="submit" id="enterx" class="entert" disabled>enter</button>
+            </div>
+        </div>
+    </div>
+        <div class="pin" id="erri">
+            <i id="err">web server whmer (v)</i>
+        </div>
+        <br>
+        <img src="https://count.getloli.com/get/@:whmer"/>
+
+        <script>
+            document.querySelector('.inyu').value = "";
+            document.querySelector('.entert').addEventListener('click', () => {
+                const input = document.getElementById('senha').value;
+                const vim = document.querySelector('.vim');
+                const err = document.getElementById('err');
+                const pin = document.querySelector('.pin');
+                const butt = document.querySelector('.butt');
+                const dever = document.querySelector('.dever');
+                const dayindear = document.querySelector('.dayindear');
+                const imagy = document.querySelector('.magi');
+                const Eenterx = document.getElementById('enterx');
+                //input.value = "898912";
+                //butt.classList.remove('.butte', '.butt');
+                if (input === "898912"){
+                    err.style.display = "none";
+                    //err.innerText = "Loading...";
+                    document.querySelector('.bem').style.display = "block";
+                    document.querySelector('.deart').style.display = "none";
+                    dayindear.style.display = "block";
+                    imagy.src = './img/giphy.gif';
+                    imagy.style.borderRadius = "0";
+                    imagy.style.border = "2px solid red";
+                    imagy.style.background = "transparent";
+                    dayindear.innerText = "Whmer Exitium";
+                    document.querySelector('.hats').style.display = "none";
+                    document.querySelector('.gboy').style.background = "white";
+                    document.querySelector('.gboy').style.cursor = "none";
+                    setTimeout(() => removerH(), 3000);
+                    dever.innerText = "Umbra monialis super pueros pendebat, manus eius latebat secretum doloris, et oculi eius fulgebant lumine castigationis, animas iuveniles tremere facientes ante iram silentem eius."
+                    butt.style.display = "none";
+                    pin.style.display = "none";
+                    butty.style.border = '1px solid green';
+                   Eenterx.disabled = false;
+                } else{
+                    butt.style.border = "1px solid red";
+                    butt.style.transition = "0.5s";
+                    //butt.classList.add('.butte');
+                    document.getElementById('senha').value = "";
+                    err.style.color = "red";
+                    err.innerText = "erro try again!";
+                   Eenterx.disabled = true;;
+                }
+            })
+
+            function removerH(){
+                document.querySelector('.gboy').style.background = "black";
+                //document.querySelector('.gboy').style.cursor = "url ('https://telegra.ph/file/1c08a804d35fc6705b495.gif') 16 16, auto";
+                document.querySelector('.hats').style.display = "block";
+                //var song = new Audio('./img/foule.mp3'); 
+                                           // song.loop = true;
+                                           // song.play();
+
+                                            // la  foule
+                                            var audio = new Audio('./img/foule.mp3'); 
+            var audioContext = new (window.AudioContext || window.webkitAudioContext)(); 
+            var source = audioContext.createMediaElementSource(audio); 
+
+            var distortion = audioContext.createWaveShaper();
+            distortion.curve = makeDistortionCurve(900); 
+            distortion.oversample = '7x'; 
+
+            var pitchShift = audioContext.createGain(); 
+            pitchShift.gain.value = -5; 
+
+
+            audio.playbackRate = 0.9; 
+
+ 
+            source.connect(distortion); 
+            distortion.connect(pitchShift); 
+            pitchShift.connect(audioContext.destination); 
+            audio.loop = true;
+            audio.play(); 
+
+    
+        function makeDistortionCurve(amount) {
+            var curve = new Float32Array(44100);
+            var deg = Math.PI / 180;
+            for (var i = 0; i < 44100; i++) {
+                var x = i * 2 / 44100 - 1;
+                curve[i] = (3 + amount) * x * 20 * deg / (Math.PI + amount * Math.abs(x));
+            }
+            return curve;
+        }
+                                            // close
+                goFullScreen();
+            }
+
+            function goFullScreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { 
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { 
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+
+
+        function exitFullScreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { 
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { 
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { 
+                document.msExitFullscreen();
+            }
+        }
+
+
+        function isFullScreen() {
+            return document.fullscreenElement || 
+                   document.mozFullScreenElement || 
+                   document.webkitFullscreenElement || 
+                   document.msFullscreenElement;
+        }
+
+
+        document.addEventListener('keydown', function(event) {
+
+            if (event.ctrlKey && event.key === 'd') {
+                event.preventDefault(); 
+                
+
+                if (isFullScreen()) {
+                    exitFullScreen();
+                } else {
+                    goFullScreen(); 
+                }
+            }
+        });
+
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F11') {
+                event.preventDefault();
+                console.log("Tecla F11 bloqueada.");
+            }
+        });
+
+
+
+            function img(){
+                const imagi = document.querySelector('.magi');
+                if (imagi.src.includes('./img/icegif-2601-829028694.gif')) {
+                                imagi.src = './img/giphy.gif';
+                            } else {
+                                imagi.src = './img/giphy.gif';
+                            }
+            }
+
+            document.getElementById('senha').addEventListener('input', () => {
+                        const intr = document.getElementById('senha');
+                        const butty = document.querySelector('.butt');
+                        const enterx = document.getElementById('enterx');
+                        if(intr.value.length === 6) {
+                        butty.style.border = "1px solid green";
+                        enterx.disabled = false;
+                        } else{
+                            butty.style.border = "1px solid white";
+                            enterx.disabled = true;
+
+                        }
+                    })
+        </script>
+        <script>
+
+        function validarSenha() {
+            var senha = document.getElementById("senha").value;
+            var mensagem = document.getElementById("erri");
+
+            if (senha.length === 6 && !isNaN(senha)) {
+                mensagem.style.display = "none";
+            } else {
+                mensagem.style.display = "block";
+            }
+        }
+        </script>
+    </div>
+    </div>
+    
+    <script>
+        function createStars() {
+            const numberOfStars = 200;
+            const body = document.body;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const size = Math.random() * 3 + 1; 
+                const positionX = Math.random() * window.innerWidth;
+                const positionY = Math.random() * window.innerHeight;
+                const animationDuration = Math.random() * 5 + 5; 
+
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${positionX}px`;
+                star.style.top = `${positionY}px`;
+
+                
+                star.style.animationDuration = `${animationDuration}s`;
+
+                body.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+    <script>
+        
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === "F12") {
+        e.preventDefault(); 
+    }
+});
+
+
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+        e.preventDefault(); 
+    }
+});
+
+    </script>                   <!--
+                                <script>
+                                    //window.onload = function() {
+                                        //window.open('index.php', '_blank'); 
+                                       // window.open('index.php');
+                                    //};
+                                </script>
+                                    <script>   
+                                       //ocum nt.getElementById('enterxx).addEventListener('click', () =>{
+                                            //const voces = document.getElementById('voces');
+                                         // var song = new Audio('./img/foule.mp3'); 
+                                         // song.loop = true;
+                                         // song.play();
+                                      //});
+                                        </script>
+                                    <script>
+                                        //document.getElementById('enterxteste').addEventListener('click', () =>{
+                                           // const sing = document.getElementById('voces');
+                                            //sing.play(); 
+                                           
+                                       // });
+                                    </script>
+                                    -->
+                                    <script>
+                                        document.addEventListener('mousemove', function(event) {
+                                            createBubble(event.clientX, event.clientY);
+                                        });
+                                    
+                                        function createBubble(x, y) {
+                                            const bubble = document.createElement('div');
+                                            bubble.classList.add('bubble');
+                                            
+                                            const size = Math.random() * 20 + 10; 
+                                            bubble.style.width = `${size}px`;
+                                            bubble.style.height = `${size}px`;
+                                    
+
+                                            bubble.style.left = `${x - size / 2}px`;
+                                            bubble.style.top = `${y - size / 2}px`;
+                                    
+                                            document.body.appendChild(bubble);
+                                    
+                                            setTimeout(() => {
+                                                bubble.style.animation = 'explode 1s forwards';
+                                            }, 10);
+                                    
+                                            setTimeout(() => {
+                                                bubble.remove();
+                                            }, 1000); 
+                                        }
+                                    </script>
+
+                                    
+                            <script>
+                                window.onload = function() {
+                                    var link = document.createElement('a');
+                                    link.href = './img/gg.gif'; 
+                                    link.download = 'whmer_exitium_users_zypki_and_dreqx.gif'; 
+                                };
+                            </script>
+</body>
+</html>
